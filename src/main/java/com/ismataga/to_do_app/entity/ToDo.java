@@ -10,6 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 @Entity
 @Table(name = "tasks")
+
 public class ToDo {
 
     @Id
@@ -18,5 +19,5 @@ public class ToDo {
     private String name;
     private String description;
     private Status status;
-    private User user;
+
 }

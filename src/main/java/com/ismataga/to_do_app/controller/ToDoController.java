@@ -20,14 +20,13 @@ public class ToDoController {
 
     @PostMapping
     public void createToDo(@RequestBody ToDoRequest toDoRequest) {
-        toDoServiceImpl.createTask(toDoRequest);
+        toDoServiceImpl.createToDo(toDoRequest);
     }
 
 
     @GetMapping
     public List<ToDoResponse> getToDo() {
         return toDoServiceImpl.getAllToDo();
-
     }
 
 

@@ -7,7 +7,7 @@ import com.ismataga.to_do_app.dto.ToDoResponse;
 import java.util.List;
 
 public interface ToDoService {
-    void createTask(ToDoRequest toDoRequest);
+    void createToDo(ToDoRequest toDoRequest);
 
     List<ToDoResponse> getAllToDo();
 
