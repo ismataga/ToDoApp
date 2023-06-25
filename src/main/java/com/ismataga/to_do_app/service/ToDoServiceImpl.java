@@ -2,7 +2,7 @@ package com.ismataga.to_do_app.service;
 
 import com.ismataga.to_do_app.dto.ToDoRequest;
 import com.ismataga.to_do_app.dto.ToDoResponse;
-import com.ismataga.to_do_app.entity.ToDo;
+import com.ismataga.to_do_app.entity.Task;
 import com.ismataga.to_do_app.mapper.ToDoMapper;
 import com.ismataga.to_do_app.repository.ToDoRepository;
 import lombok.RequiredArgsConstructor;
@@ -22,8 +22,8 @@ public class ToDoServiceImpl implements ToDoService {
     @Override
     public void createToDo(ToDoRequest toDoRequest) {
         log.info("CreateToDo().start");
-        ToDo toDo = toDoMapper.mapToToDoEntity(toDoRequest);
-        toDoRepository.save(toDo);
+        Task task = toDoMapper.mapToToDoEntity(toDoRequest);
+        toDoRepository.save(task);
         log.info("CreatedToDo/end");
     }
 
@@ -31,34 +31,33 @@ public class ToDoServiceImpl implements ToDoService {
     public List<ToDoResponse> getAllToDo() {
 
         log.info("getAllToDo().start");
-        List<ToDo> employees = toDoRepository.findAll();
-        List<ToDoResponse> toDoResponses = toDoMapper.mapToToDoResponseList(employees);
+     List<Task> task = toDoRepository.findAll();
+        List<ToDoResponse> toDoResponses = toDoMapper.mapToToDoResponseList(task);
         log.info("getAllToDo().end");
-
         return toDoResponses;
-
     }
 
     @Override
     public ToDoResponse getToDoById(Long id) {
-        log.info("getToDoById().start id ", id);
-        ToDo toDo = toDoRepository.findById(id)
+        log.info("getToDoById().start id {}", id);
+        Task task = toDoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("ToDo not founded by id" + id));
-        log.info("getToDoById().end id ", id);
-        return toDoMapper.mapToToDoResponse(toDo);
+        log.info("getToDoById().end id {}", id);
+        return toDoMapper.mapToToDoResponse(task);
 
     }
 
 
     @Override
     public void updateToDo(Long id, ToDoRequest toDoRequest) {
-        log.info("updateToDo().start id ", id);
-        ToDo toDo = toDoRepository.findById(id)
+        log.info("updateToDo().start id {} ", id);
+
+        Task task = toDoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("To do not founded by id" + id));
         if (toDoRequest.getName() != null)
-            toDo.setName(toDoRequest.getName());
-        toDoRepository.save(toDo);
-        log.info("updateToDo().end id ", id);
+            task.setName(toDoRequest.getName());
+        toDoRepository.save(task);
+        log.info("updateToDo().end id {}", id);
     }
 
     @Override
