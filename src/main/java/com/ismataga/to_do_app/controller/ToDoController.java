@@ -2,19 +2,17 @@ package com.ismataga.to_do_app.controller;
 
 import com.ismataga.to_do_app.dto.ToDoRequest;
 import com.ismataga.to_do_app.dto.ToDoResponse;
-import com.ismataga.to_do_app.entity.Status;
-import com.ismataga.to_do_app.entity.ToDo;
 import com.ismataga.to_do_app.service.ToDoServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("v1/tasks")
 @RequiredArgsConstructor
 public class ToDoController {
+
     private final ToDoServiceImpl toDoServiceImpl;
 
 
@@ -25,7 +23,7 @@ public class ToDoController {
 
 
     @GetMapping
-    public List<ToDoResponse> getToDo() {
+    public List<ToDoResponse> getAllToDos() {
         return toDoServiceImpl.getAllToDo();
     }
 
@@ -35,7 +33,7 @@ public class ToDoController {
         return toDoServiceImpl.getToDoById(id);
     }
 
-    @PatchMapping("{id}")
+    @PutMapping("{id}")
     public void updateToDo(@PathVariable Long id, @RequestBody ToDoRequest toDoRequest) {
         toDoServiceImpl.updateToDo(id, toDoRequest);
 
