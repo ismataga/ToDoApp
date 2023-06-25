@@ -19,6 +19,7 @@ public class User {
     private String name;
     private String  email;
     private String password;
+    @OneToMany
+    private List<Task> taskList;
     private boolean isActive;
-    private List<ToDo> toDos;
 }

@@ -21,17 +21,17 @@ public class ToDoServiceImpl implements ToDoService {
 
     @Override
     public void createToDo(ToDoRequest toDoRequest) {
-        log.info("CreateToDo().start");
+        log.info("createToDo().start");
         Task task = toDoMapper.mapToToDoEntity(toDoRequest);
         toDoRepository.save(task);
-        log.info("CreatedToDo/end");
+        log.info("createdToDo().end");
     }
 
     @Override
     public List<ToDoResponse> getAllToDo() {
 
         log.info("getAllToDo().start");
-     List<Task> task = toDoRepository.findAll();
+        List<Task> task = toDoRepository.findAll();
         List<ToDoResponse> toDoResponses = toDoMapper.mapToToDoResponseList(task);
         log.info("getAllToDo().end");
         return toDoResponses;
