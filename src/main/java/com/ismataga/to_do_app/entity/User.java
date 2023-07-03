@@ -3,6 +3,7 @@ package com.ismataga.to_do_app.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -19,7 +20,20 @@ public class User {
     private String name;
     private String  email;
     private String password;
-    @OneToMany
+    @OneToMany(mappedBy = "user",
+            fetch = FetchType.EAGER,
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE,
+                    CascadeType.DETACH,CascadeType.REFRESH})
     private List<Task> taskList;
     private boolean isActive;
+
+
+
+    public void add(Task task){
+        if(taskList==null){
+            taskList=new ArrayList<>();
+        }
+        taskList.add(task);
+        task.setUser(this);
+    }
 }

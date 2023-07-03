@@ -17,4 +17,6 @@ public interface ToDoMapper {
     List<ToDoResponse> mapToToDoResponseList(List<Task> task);
 
     ToDoResponse mapToToDoResponse(Task task);
+
+//    List<ToDoResponse> mapToToDoResponses(List<Task> task);
 }

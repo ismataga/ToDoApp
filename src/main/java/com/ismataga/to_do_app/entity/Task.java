@@ -19,5 +19,8 @@ public class Task {
     private String description;
     @Enumerated(EnumType.STRING)
     private Status status;
-
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
+            CascadeType.DETACH,CascadeType.REFRESH})
+    @JoinColumn(name = "user_id")
+    private User user;
 }

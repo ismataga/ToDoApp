@@ -4,7 +4,12 @@ import com.ismataga.to_do_app.entity.Task;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface ToDoRepository extends JpaRepository<Task,Long> {
+
+
+
 
 }
