@@ -9,8 +9,8 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ToDoResponse {
-    private Long id;
+public class TaskRequest {
+
     private String name;
     private String description;
     private Status status;

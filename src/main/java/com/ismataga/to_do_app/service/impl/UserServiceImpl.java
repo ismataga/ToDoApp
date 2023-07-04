@@ -1,14 +1,14 @@
 package com.ismataga.to_do_app.service.impl;
 
-import com.ismataga.to_do_app.dto.ToDoResponse;
+
 import com.ismataga.to_do_app.dto.UserRequest;
 import com.ismataga.to_do_app.dto.UserResponse;
-import com.ismataga.to_do_app.entity.Task;
 import com.ismataga.to_do_app.entity.User;
 import com.ismataga.to_do_app.mapper.UserMapper;
-import com.ismataga.to_do_app.repository.ToDoRepository;
+
 import com.ismataga.to_do_app.repository.UserRepository;
 import com.ismataga.to_do_app.service.UserService;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
@@ -21,7 +21,6 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-    private final ToDoRepository toDoRepository;
     private final UserMapper userMapper = UserMapper.INSTANCE;
 
     @Override
@@ -72,12 +71,5 @@ public class UserServiceImpl implements UserService {
         log.info("deleteUserById().end id {}", id);
     }
 
-//    public List<ToDoResponse> getTasksByUserId(Long id) {
-//        List<Task> task = userRepository.findByUserUserId(id);
-//        List<ToDoResponse> toDoResponses =userMapper.mapToToDoResponses(task);
-//
-//        return toDoResponses;
-//
-//    }
 
 }

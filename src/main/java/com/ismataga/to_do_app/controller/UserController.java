@@ -1,6 +1,6 @@
 package com.ismataga.to_do_app.controller;
 
-import com.ismataga.to_do_app.dto.ToDoResponse;
+
 import com.ismataga.to_do_app.dto.UserRequest;
 import com.ismataga.to_do_app.dto.UserResponse;
 import com.ismataga.to_do_app.service.UserService;
@@ -24,7 +24,7 @@ public class UserController {
     public List<UserResponse> getAllUsers(){
       return   userService.getAllUsers();
     }
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public UserResponse getUserById(@PathVariable Long id){
         return userService.getUserById(id);
     }
@@ -38,10 +38,7 @@ public class UserController {
         userService.deleteUser(id);
     }
 
-//    @GetMapping("{id}/tasks")
-//    public List<ToDoResponse> getTasksByUserId(@PathVariable Long id) {
-//        return userService.getTasksByUserId(id);
-//    }
+
 
 
 

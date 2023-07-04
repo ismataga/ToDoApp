@@ -1,6 +1,7 @@
 package com.ismataga.to_do_app.mapper;
 
-import com.ismataga.to_do_app.dto.ToDoResponse;
+
+import com.ismataga.to_do_app.dto.TaskResponse;
 import com.ismataga.to_do_app.dto.UserRequest;
 import com.ismataga.to_do_app.dto.UserResponse;
 import com.ismataga.to_do_app.entity.Task;
@@ -20,5 +21,5 @@ public interface UserMapper {
 
     UserResponse mapToUserResponse(User user);
 
-    List<ToDoResponse> mapToToDoResponses(List<Task> task);
+
 }

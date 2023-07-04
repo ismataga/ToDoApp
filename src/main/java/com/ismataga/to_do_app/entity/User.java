@@ -27,8 +27,6 @@ public class User {
     private List<Task> taskList;
     private boolean isActive;
 
-
-
     public void add(Task task){
         if(taskList==null){
             taskList=new ArrayList<>();

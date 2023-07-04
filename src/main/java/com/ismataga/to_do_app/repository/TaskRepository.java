@@ -7,9 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ToDoRepository extends JpaRepository<Task,Long> {
-
-
-
+public interface TaskRepository extends JpaRepository<Task, Long> {
 
 }
