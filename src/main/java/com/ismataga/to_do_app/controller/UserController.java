@@ -1,6 +1,4 @@
 package com.ismataga.to_do_app.controller;
-
-
 import com.ismataga.to_do_app.dto.UserRequest;
 import com.ismataga.to_do_app.dto.UserResponse;
 import com.ismataga.to_do_app.service.UserService;
