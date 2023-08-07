@@ -2,9 +2,15 @@ package com.ismataga.to_do_app.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
 
 @Getter
 @Setter
@@ -13,7 +19,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,11 +33,25 @@ public class User {
     private List<Task> taskList;
     private boolean isActive;
 
-    public void add(Task task){
-        if(taskList==null){
-            taskList=new ArrayList<>();
-        }
-        taskList.add(task);
-        task.setUser(this);
+
+    @PrePersist
+    public void prePersist() {
+        Optional.ofNullable(taskList)
+                .stream()
+                .flatMap(Collection::stream)
+                .forEach(task -> task.setUser(this));
     }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Collections.emptyList();
+    }
+
+
+    public String username;
+    public boolean accountNonExpired;
+    public boolean accountNonLocked;
+    public boolean credentialsNonExpired;
+    public boolean enabled;
+
 }

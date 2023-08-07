@@ -2,16 +2,15 @@ package com.ismataga.to_do_app.mapper;
 
 import com.ismataga.to_do_app.dto.TaskRequest;
 import com.ismataga.to_do_app.dto.TaskResponse;
-
 import com.ismataga.to_do_app.entity.Task;
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
+import org.mapstruct.Mapping;
 
 import java.util.List;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface TaskMapper {
-    TaskMapper INSTANCE = Mappers.getMapper(TaskMapper.class);
+
 
     Task mapToTaskEntity(TaskRequest taskRequest);
 

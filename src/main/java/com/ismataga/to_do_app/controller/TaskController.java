@@ -2,6 +2,7 @@ package com.ismataga.to_do_app.controller;
 import com.ismataga.to_do_app.dto.TaskRequest;
 import com.ismataga.to_do_app.dto.TaskResponse;
 import com.ismataga.to_do_app.service.TaskService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +18,7 @@ public class TaskController {
 
 
     @PostMapping
-    public void createTask(@RequestBody TaskRequest taskRequest) {
+    public void createTask(@RequestBody @Valid TaskRequest taskRequest) {
         taskService.createTask(taskRequest);
     }
 

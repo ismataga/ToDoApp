@@ -3,6 +3,7 @@ package com.ismataga.to_do_app.service.impl;
 import com.ismataga.to_do_app.dto.TaskRequest;
 import com.ismataga.to_do_app.dto.TaskResponse;
 import com.ismataga.to_do_app.entity.Task;
+import com.ismataga.to_do_app.exceptions.UserNotFoundException;
 import com.ismataga.to_do_app.mapper.TaskMapper;
 import com.ismataga.to_do_app.repository.TaskRepository;
 import com.ismataga.to_do_app.service.TaskService;
@@ -16,7 +17,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class TaskServiceImpl implements TaskService {
-    private final TaskMapper taskMapper = TaskMapper.INSTANCE;
+    private final TaskMapper taskMapper ;
 
     private final TaskRepository taskRepository;
 
@@ -46,7 +47,7 @@ public class TaskServiceImpl implements TaskService {
     public TaskResponse getTaskById(Long id) {
         log.info("getTaskById().start id {}", id);
         Task task = taskRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Task not founded by id" + id));
+                .orElseThrow(() -> new UserNotFoundException("Task not founded by id " + id));
         log.info("getToDoById().end id {}", id);
         return taskMapper.mapToTaskResponse(task);
 
@@ -58,7 +59,7 @@ public class TaskServiceImpl implements TaskService {
         log.info("updateTask().start id {} ", id);
 
         Task task = taskRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Task not founded by id" + id));
+                .orElseThrow(() -> new UserNotFoundException("Task not founded by id " + id));
         if (taskRequest.getName() != null)
             task.setName(taskRequest.getName());
         taskRepository.save(task);
@@ -69,10 +70,12 @@ public class TaskServiceImpl implements TaskService {
     public void deleteTask(Long id) {
         log.info("deleteTask().start id ", id);
         taskRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Task not founded by id" + id));
+                .orElseThrow(() -> new UserNotFoundException("Task not founded by id " + id));
         taskRepository.deleteById(id);
         log.info("deleteTask().end id ", id);
 
     }
+
+
 
 }
