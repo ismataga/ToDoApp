@@ -7,15 +7,13 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@PasswordMatch(groups = ValidUser.class)
+@PasswordMatch
 public class RegistrationDTO {
-
-
 
     @NotBlank
     private String username;
 
-    @NotBlank(groups = {ValidRegistration.class})
+    @NotBlank
     private String password;
 
     @NotBlank

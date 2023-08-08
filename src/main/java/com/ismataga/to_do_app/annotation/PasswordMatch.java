@@ -16,7 +16,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Documented
 public @interface PasswordMatch {
 
-    String message() default "{error.password.mismatch}";
+    String message() default "{com.ismataga.to_do_app.annotation.PasswordMatch.message}";
 
     Class<?>[] groups() default {};
 
