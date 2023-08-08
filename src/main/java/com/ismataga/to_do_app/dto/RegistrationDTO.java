@@ -1,6 +1,7 @@
 package com.ismataga.to_do_app.dto;
 
 import com.ismataga.to_do_app.annotation.PasswordMatch;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,6 +12,7 @@ import lombok.Setter;
 public class RegistrationDTO {
 
     @NotBlank
+    @Email(regexp = )
     private String username;
 
     @NotBlank
