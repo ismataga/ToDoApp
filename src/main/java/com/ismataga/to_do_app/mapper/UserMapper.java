@@ -11,8 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.List;
+import java.util.UUID;
 
-@Mapper
+@Mapper(imports = UUID.class)
 public abstract class UserMapper {
 
     @Autowired
@@ -27,10 +28,12 @@ public abstract class UserMapper {
     @Mapping(target = "name", ignore = true)
     @Mapping(target = "email", ignore = true)
     @Mapping(target = "id", ignore = true)
+    @Mapping(target = "enable", constant = "false ")
     @Mapping(target = "accountNonExpired", constant = "true")
     @Mapping(target = "accountNonLocked", constant = "true")
     @Mapping(target = "credentialsNonExpired", constant = "true")
     @Mapping(target = "password", expression = "java(encoder.encode(dto.getPassword()))")
+    @Mapping(target = "uuid", expression = "java(UUID.randomUUID())")
     public abstract User toEntity(RegistrationDTO dto);
 
 }
