@@ -10,6 +10,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Stream;
 
 @Getter
@@ -48,10 +49,12 @@ public class User implements UserDetails {
     }
 
 
-    public String username;
-    public boolean accountNonExpired;
-    public boolean accountNonLocked;
-    public boolean credentialsNonExpired;
-    public boolean enabled;
+    private String username;
+    private boolean accountNonExpired;
+    private boolean accountNonLocked;
+    private boolean credentialsNonExpired;
+    private boolean enabled;
+    private UUID uuid;
+
 
 }
