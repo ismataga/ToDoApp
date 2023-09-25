@@ -2,7 +2,9 @@ package com.ismataga.to_do_app.controller;
 import com.ismataga.to_do_app.dto.UserRequest;
 import com.ismataga.to_do_app.dto.UserResponse;
 import com.ismataga.to_do_app.service.UserService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,6 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("v1/users")
 @RequiredArgsConstructor
+@SecurityRequirement(name = "bearerAuth")
 public class UserController {
 
     private final UserService userService;
@@ -18,6 +21,7 @@ public class UserController {
     public void addUser(@RequestBody UserRequest userRequest){
         userService.createUser(userRequest);
     }
+    @PreAuthorize("hasAuthority('READ_USER')")
     @GetMapping
     public List<UserResponse> getAllUsers(){
       return   userService.getAllUsers();

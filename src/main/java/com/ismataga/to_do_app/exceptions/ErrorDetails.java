@@ -1,7 +1,9 @@
 package com.ismataga.to_do_app.exceptions;
 
-import java.util.Date;
+import lombok.Builder;
 
+import java.util.Date;
+@Builder
 public class ErrorDetails {
     private final Date timeStamp;
     private final String message;

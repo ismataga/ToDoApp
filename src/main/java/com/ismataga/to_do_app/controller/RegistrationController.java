@@ -21,22 +21,23 @@ import java.util.UUID;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/registration")
-public class     RegistrationController {
+public class RegistrationController {
 
     private final RegistrationService registrationService;
 
 
-    @PreAuthorize("permitAll()")
+
     @PostMapping
+    @PreAuthorize("permitAll()")
     @ResponseStatus(HttpStatus.CREATED)
     public void register(@Valid @RequestBody RegistrationDTO dto){
 
         registrationService.register(dto);
-
     }
 
     @GetMapping("/confirmation/{uuid}")
     public void confirmation(@PathVariable UUID uuid){
+        registrationService.confirm(uuid);
 
     }
 }

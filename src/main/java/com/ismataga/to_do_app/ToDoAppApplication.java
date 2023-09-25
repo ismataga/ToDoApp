@@ -3,8 +3,10 @@ package com.ismataga.to_do_app;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
-@SpringBootApplication
+@EnableScheduling
+@SpringBootApplication(exclude = UserDetailsServiceAutoConfiguration.class)
 public class ToDoAppApplication {
 
     public static void main(String[] args) {

@@ -1,6 +1,15 @@
 package com.ismataga.to_do_app.dto;
+
 import com.ismataga.to_do_app.entity.Task;
-import lombok.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.util.List;
 
 @Getter
@@ -9,9 +18,10 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserRequest {
-
+    @NotBlank
     private String name;
-    private String  email;
+    @NotNull
+    @Email(regexp = "^\\w+@\\w+\\.\\w+$")
+    private String email;
     private String password;
-    private List<Task> taskList;
 }
