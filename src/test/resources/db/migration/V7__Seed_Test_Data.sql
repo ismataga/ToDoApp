@@ -14,9 +14,9 @@ insert into users(
     otp_code
 )
 values (
-        "Ali",
-        "test@test.com",
-        "$2a$12$F7ro2BXCWqpSpnQ21UWgfe0JXy2DNiBcxRuHFfxOtZ98HDY0LvvaW",
+        'Ali',
+        'test@test.com',
+        '$2a$12$F7ro2BXCWqpSpnQ21UWgfe0JXy2DNiBcxRuHFfxOtZ98HDY0LvvaW',
         true,
         null,
         true,
